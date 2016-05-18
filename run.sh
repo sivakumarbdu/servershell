@@ -1,5 +1,6 @@
 #! /bin/bash
 #Start Rails webric server, should be placed inside root of rails application
+
 run_server() {
 	echo "Trying to run server..."
 	PID_FILE=tmp/pids/server.pid
