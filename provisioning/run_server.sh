@@ -2,6 +2,7 @@
 
 set_environment() {
 	source env.sh
+	source "servers/$1"
 }
 
 
@@ -31,12 +32,15 @@ copy_to_server(){
   scp  -i $PEM_FILE  -r * ${USER}@${IP}:/tmp/pscript
 }
 
+SERVERS=$(ls servers)
+for SERVER in $SERVERS
+do
+	#copy files
+	set_environment $SERVER
+	run_command_on_server mkdir /tmp/pscript
+	copy_to_server
 
-#copy files
-set_environment
-run_command_on_server mkdir /tmp/pscript
-copy_to_server
-
-#run script
-run_script_on_server
-remove_scripts
+	#run script
+	run_script_on_server
+	remove_scripts
+done
