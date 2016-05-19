@@ -3,7 +3,12 @@ set_environment(){
  	source env.sh
 }
 
+update_server(){
+	sudo apt-get update
+}
+
 set_environment
+update_server
 for MODULE in $SCRIPT_MODULES
 do
   echo "Running the module $MODULE"
