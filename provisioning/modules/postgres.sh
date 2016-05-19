@@ -4,8 +4,5 @@ if [ -e "/etc/init.d/postgresql" ]
   then
   echo "Postgresql already installed"
 else
-  sudo apt-get install postgresql postgresql-contrib
-  echo "setting password"
-  sudo -u postgres psql postgres
-  \password postgres
+  sudo apt-get -y install  postgresql postgresql-contrib
 fi
