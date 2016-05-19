@@ -12,7 +12,7 @@ update_server
 for MODULE in $SCRIPT_MODULES
 do
   echo "Running the module $MODULE"
-  "./modules/${MODULE}.sh"
+  "./modules/${MODULE}/main.sh"
   if [ "$?" -ne "0" ]
   	then
   	echo "Could not run the module $MODULE"
