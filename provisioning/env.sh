@@ -1,0 +1,1 @@
+export SCRIPT_RUBY_VERSION=1.9.3
