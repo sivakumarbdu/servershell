@@ -5,7 +5,6 @@ set_environment(){
 
 update_server(){
 	sudo apt-get update
-	/bin/bash --login
 }
 
 set_environment
