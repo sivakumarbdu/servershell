@@ -54,6 +54,17 @@ done
 
 }
 
+run_in_single_node(){
+	set_environment $1
+	run_command_on_server mkdir /tmp/pscript
+	copy_to_server
+
+	#run script
+	run_script_on_server
+	remove_scripts
+}
+
+
 case "$1" in
 	"local")
     echo "Run mode local"
@@ -61,6 +72,12 @@ case "$1" in
     ;;
     "server")
     echo "Run mode server"
-    run_server
+    if [ -e "servers/${2}.sh" ]
+    	then
+    	echo "Running script on $2"
+    	run_in_single_node $2
+    else
+    	run_server
+    fi
     ;;
 esac
