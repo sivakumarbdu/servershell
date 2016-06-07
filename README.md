@@ -1,3 +1,5 @@
+Collection of simple shell scripts to provision linux machine. Shell scrips are grouped inside the modules folder.
+
 ##Selecting modules to install
  Edit the ```env.sh``` and add the modules to install. You can check the modules insider modules/ folder.
 
