@@ -13,11 +13,11 @@ This will install modules in local machine
 
 Configure servers inside servers/ folder.  Create file with.sh(eg ```srever1.sh```) extension add server details.
 
-```export PEM_FILE=""
-
+```
+export PEM_FILE=""
 export USER=""
-
-export IP=""```
+export IP=""
+```
 
 * PEM_FILE -> Location of .pem file (absolute path)
 * USER -> User name of the server
