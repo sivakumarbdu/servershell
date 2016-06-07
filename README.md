@@ -1,5 +1,5 @@
 ##Selecting modules to install
-Edit the ```env.sh``` and add the modules to install. You can check the modules insider modules/ folder.
+* Edit the ```env.sh``` and add the modules to install. You can check the modules insider modules/ folder.
 
 ```export SCRIPT_MODULES="rvm_ruby nvm node mysql"```
 
