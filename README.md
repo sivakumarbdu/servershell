@@ -6,7 +6,7 @@ export SCRIPT_MODULES="rvm_ruby nvm node mysql"
 This will install ruby with rvm , node with nvm (node version manager) and mysql
 
 #Privisioning local machine
-./run local
+``` ./run local ```
 This will install modules in local machine
 
 #Provisioning server
