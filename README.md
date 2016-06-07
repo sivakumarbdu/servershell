@@ -20,7 +20,9 @@ export USER=""
 export IP=""
 
 PEM_FILE -> Location of .pem file (absolute path)
+
 USER -> User name of the server
+
 IP -> IP address of the server
 
 This will install modules in server machine machine
