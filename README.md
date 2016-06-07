@@ -13,7 +13,7 @@ This will install modules in local machine
 
 ##Provisioning server
 
-Configure servers inside servers/ folder. Create file with.sh(eg ```server1.sh```) extension add server details.
+Configure servers inside servers/ folder. Create file with.sh(eg ```aws_server1.sh```) extension add server details.
 
 ```
 export PEM_FILE=""
