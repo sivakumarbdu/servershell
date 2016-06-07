@@ -28,3 +28,4 @@ IP -> IP address of the server
 This will install modules in server machine machine
 
 ``` ./run server ```
+We can create multiple servers insider servers/ folder. Modules will be installed in all server.
