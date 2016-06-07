@@ -19,11 +19,9 @@ Configure servers inside servers/ folder.  Create file with.sh(eg ```srever1.sh`
 
 ```export IP=""```
 
-PEM_FILE -> Location of .pem file (absolute path)
-
-USER -> User name of the server
-
-IP -> IP address of the server
+* PEM_FILE -> Location of .pem file (absolute path)
+* USER -> User name of the server
+* IP -> IP address of the server
 
 This will install modules in server machine machine
 
