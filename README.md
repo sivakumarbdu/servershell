@@ -1,7 +1,7 @@
 ##Selecting modules to install
 Edit the env.sh and add the modules to install. You can check the modules insider modules/ folder.
 
-export SCRIPT_MODULES="rvm_ruby nvm node mysql"
+```export SCRIPT_MODULES="rvm_ruby nvm node mysql"```
 
 This will install ruby with rvm , node with nvm (node version manager) and mysql
 
@@ -13,11 +13,11 @@ This will install modules in local machine
 
 Configure servers inside servers/ folder.  Create file with.sh(eg srever1.sh) extension add server details.
 
-export PEM_FILE=""
+```export PEM_FILE=""```
 
-export USER=""
+```export USER=""```
 
-export IP=""
+```export IP=""```
 
 PEM_FILE -> Location of .pem file (absolute path)
 
