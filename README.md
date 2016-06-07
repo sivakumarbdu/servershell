@@ -26,3 +26,5 @@ USER -> User name of the server
 IP -> IP address of the server
 
 This will install modules in server machine machine
+
+``` ./run server ```
