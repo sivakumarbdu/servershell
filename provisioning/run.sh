@@ -10,6 +10,7 @@ run_script_on_server() {
 
 ssh  -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
   cd /tmp/pscript;
+  tar -xvf provision_script_server.tar
   ./mod.sh
 SCRIPT
 }
@@ -27,14 +28,16 @@ SCRIPT
 
 run_command_on_server() {
 echo "run command on server"
-ssh  -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
+ssh -o StrictHostKeyChecking=no -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
   cd /tmp/pscript;
   mkdir /tmp/pscript;
 SCRIPT
 }
 
 copy_to_server(){
-  scp  -i $PEM_FILE  -r * ${USER}@${IP}:/tmp/pscript
+  rm provision_script_server.tar
+  tar -cvf provision_script_server.tar .
+  scp -o StrictHostKeyChecking=no -i $PEM_FILE  provision_script_server.tar ${USER}@${IP}:/tmp/pscript
 }
 
 run_server() {
