@@ -36,7 +36,7 @@ SCRIPT
 
 copy_to_server(){
   rm provision_script_server.tar
-  tar -cvf provision_script_server.tar .
+  tar -cvf  --exclude='./servers' provision_script_server.tar . 
   scp -o StrictHostKeyChecking=no -i $PEM_FILE  provision_script_server.tar ${USER}@${IP}:/tmp/pscript
 }
 
