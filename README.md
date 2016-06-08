@@ -3,7 +3,7 @@ Collection of simple shell scripts to provision linux machine. Shell scrips are 
 ##Selecting modules to install
  Edit the ```env.sh``` and add the modules to install. You can check the modules insider modules/ folder.
 
-```export SCRIPT_MODULES="rvm_ruby nvm node mysql"```
+```export SCRIPT_MODULES="rvm_ruby nvm_node mysql"```
 
 This will install ruby with rvm, node with nvm (node version manager) and mysql
 
