@@ -1,4 +1,5 @@
 #! /bin/bash
+
 MYSQL_LEN = $(which mysql | wc -l)
 if [ "$MYSQL_LEN" -ne "0" ]
   then
