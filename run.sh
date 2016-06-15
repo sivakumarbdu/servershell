@@ -68,6 +68,15 @@ copy_to_server(){
   fi
 }
 
+copy_log_to_local(){
+  if [ "$PEM_FILE" == "" ]
+    then
+    scp -o StrictHostKeyChecking=no -i   ${USER}@${IP}:/tmp/script_log.txt log/
+  else
+    scp -o StrictHostKeyChecking=no -i $PEM_FILE  ${USER}@${IP}:/tmp/script_log.txt log/
+  fi
+}
+
 run_server() {
 
 SERVERS=$(ls servers)
@@ -81,6 +90,7 @@ do
 	#run script
 	run_script_on_server
 	remove_scripts
+  copy_log_to_local
 done
 
 }
