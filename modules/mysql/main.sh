@@ -1,7 +1,8 @@
 #! /bin/bash
 
-MYSQL_LEN = $(which mysql | wc -l)
-if [ "$MYSQL_LEN" -ne "0" ]
+MYSQL=$(which mysql | wc -l)
+
+if [ "$MYSQL" -ne "0" ]
   then
     echo "Mysql already installed"
   else
