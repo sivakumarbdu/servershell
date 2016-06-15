@@ -58,12 +58,14 @@ fi
 }
 
 copy_to_server(){
-  if [ -e "rm provision_script_server.tar" ]
-    then
-     rm provision_script_server.tar
-  fi
+  rm provision_script_server.tar
   tar -cvf  provision_script_server.tar . --exclude='servers'  --exclude='examples'  --exclude='.git'
-  scp -o StrictHostKeyChecking=no -i $PEM_FILE  provision_script_server.tar ${USER}@${IP}:/tmp/pscript
+  if [ "$PEM_FILE" == "" ]
+    then
+    scp -o StrictHostKeyChecking=no -i  provision_script_server.tar ${USER}@${IP}:/tmp/pscript
+  else
+    scp -o StrictHostKeyChecking=no -i $PEM_FILE  provision_script_server.tar ${USER}@${IP}:/tmp/pscript
+  fi
 }
 
 run_server() {
