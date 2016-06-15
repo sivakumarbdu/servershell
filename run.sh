@@ -6,7 +6,7 @@ script_config(){
 set_environment() {
 	source env.sh
   source config.sh
-	source "servers/${1}.sh"
+	source "servers/$1"
 }
 
 run_script_on_server() {
