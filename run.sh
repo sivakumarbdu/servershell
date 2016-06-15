@@ -6,12 +6,20 @@ set_environment() {
 }
 
 run_script_on_server() {
-
-ssh  -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
-  cd /tmp/pscript;
-  tar -xvf provision_script_server.tar
-  ./mod.sh
+  if [ "$PEM_FILE" == "" ]
+    then
+    ssh  ${USER}@${IP} << 'SCRIPT'
+      cd /tmp/pscript;
+      tar -xvf provision_script_server.tar
+      ./mod.sh
 SCRIPT
+  else
+    ssh  -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
+      cd /tmp/pscript;
+      tar -xvf provision_script_server.tar
+      ./mod.sh
+SCRIPT
+  fi
 }
 
 run_script_in_local() {
