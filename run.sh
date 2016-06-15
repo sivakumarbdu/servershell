@@ -27,9 +27,18 @@ run_script_in_local() {
 }
 
 remove_scripts() {
-  ssh  -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
-  rm -r /tmp/pscript
+  if [ "$PEM_FILE" == "" ]
+    then
+     echo "pem file not exists"
+    ssh  ${USER}@${IP} << 'SCRIPT'
+      rm -r /tmp/pscript
 SCRIPT
+  else
+    echo "pem file exists"
+    ssh  -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
+      rm -r /tmp/pscript
+SCRIPT
+  fi
 }
 
 run_command_on_server() {
