@@ -43,15 +43,18 @@ SCRIPT
 
 run_command_on_server() {
 echo "run command on server"
-ssh -o StrictHostKeyChecking=no -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
-  cd /tmp/pscript;
-  if [ -e "/tmp/pscript" ]
-    then
-    echo "script directory exists"
-  else
+if [ "$PEM_FILE" == "" ]
+  then
+  ssh -o StrictHostKeyChecking=no ${USER}@${IP} << 'SCRIPT'
+    cd /tmp/pscript;
     mkdir /tmp/pscript;
-  fi
 SCRIPT
+else
+  ssh -o StrictHostKeyChecking=no -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
+    cd /tmp/pscript;
+    mkdir /tmp/pscript;
+SCRIPT
+fi
 }
 
 copy_to_server(){
