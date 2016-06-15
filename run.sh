@@ -41,6 +41,21 @@ SCRIPT
   fi
 }
 
+remove_server_logs()
+{
+  if [ "$PEM_FILE" == "" ]
+    then
+     echo "pem file not exists"
+    ssh  ${USER}@${IP} << 'SCRIPT'
+      rm -r /tmp/script_log.txt
+SCRIPT
+  else
+    echo "pem file exists"
+    ssh  -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
+      rm -r /tmp/script_log.txt
+SCRIPT
+  fi
+}
 run_command_on_server() {
 echo "run command on server"
 if [ "$PEM_FILE" == "" ]
@@ -82,7 +97,7 @@ run_server() {
 SERVERS=$(ls servers)
 for SERVER in $SERVERS
 do
-	#copy files
+	#copy filesre
 	set_environment $SERVER
 	run_command_on_server mkdir /tmp/pscript
 	copy_to_server
@@ -91,6 +106,7 @@ do
 	run_script_on_server
 	remove_scripts
   copy_log_to_local
+  remove_server_logs
 done
 
 }
