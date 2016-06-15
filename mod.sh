@@ -7,7 +7,7 @@ set_environment(){
 }
 
 update_server(){
-	sudo apt-get update
+	sudo apt-get update  >> "/tmp/script_log.txt"
 }
 
 run_module(){
