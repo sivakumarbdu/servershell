@@ -16,7 +16,7 @@ run_module(){
 	then
   	"${MODULE}/#{$MACHINE_OS}/#{$MACHINE_VER}/main.sh"
   else
-  	"./modules/${MODULE}/main.sh"
+  	./modules/${MODULE}/main.sh >> /tmp/script_log.txt
   fi
 }
 
