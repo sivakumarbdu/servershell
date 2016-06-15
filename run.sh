@@ -1,8 +1,12 @@
 #! /bin/bash
 
+script_config(){
+  export SCRIPT_LOG_FILE="/tmp/script_log.txt"
+}
 set_environment() {
 	source env.sh
-	source "servers/$1"
+  source config.sh
+	source "servers/${1}.sh"
 }
 
 run_script_on_server() {
@@ -47,12 +51,12 @@ remove_server_logs()
     then
      echo "pem file not exists"
     ssh  ${USER}@${IP} << 'SCRIPT'
-      rm -r /tmp/script_log.txt
+      rm -r $SCRIPT_LOG_FILE
 SCRIPT
   else
     echo "pem file exists"
     ssh  -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
-      rm -r /tmp/script_log.txt
+      rm -r $SCRIPT_LOG_FILE
 SCRIPT
   fi
 }
@@ -86,9 +90,9 @@ copy_to_server(){
 copy_log_to_local(){
   if [ "$PEM_FILE" == "" ]
     then
-    scp -o StrictHostKeyChecking=no -i   ${USER}@${IP}:/tmp/script_log.txt log/
+    scp -o StrictHostKeyChecking=no -i   ${USER}@${IP}:${SCRIPT_LOG_FILE} log/
   else
-    scp -o StrictHostKeyChecking=no -i $PEM_FILE  ${USER}@${IP}:/tmp/script_log.txt log/
+    scp -o StrictHostKeyChecking=no -i $PEM_FILE  ${USER}@${IP}:${SCRIPT_LOG_FILE} log/
   fi
 }
 
