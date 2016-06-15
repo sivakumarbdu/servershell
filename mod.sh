@@ -1,6 +1,7 @@
 #!/bin/bash
 set_environment(){
  	source env.sh
+  source config.sh
  	export MACHINE_OS=$(lsb_release -si)
   export MACHINE_ARCH=$(uname -m | sed 's/x86_//;s/i[3-6]86/32/')
   export MACHINE_VER=$(lsb_release -sr)
@@ -16,7 +17,7 @@ run_module(){
 	then
   	"${MODULE}/#{$MACHINE_OS}/#{$MACHINE_VER}/main.sh"
   else
-  	./modules/${MODULE}/main.sh >> /tmp/script_log.txt
+  	./modules/${MODULE}/main.sh >> $SCRIPT_LOG_FILE
   fi
 }
 
