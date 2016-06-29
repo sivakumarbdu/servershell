@@ -27,6 +27,6 @@ export IP=""
 
 This will install modules in server machine machine
 
-``` ./run server ```
+``` ./run.sh server ```
 
 We can create multiple servers insider servers/ folder. Modules will be installed in all server.
