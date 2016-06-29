@@ -39,6 +39,8 @@ if [ "$RUBY" -ne "0" ]
   echo "Ruby already installed $INSTALLED_RUBY_VERSION"
 else
    ~/.rvm/bin/rvm install $SCRIPT_RUBY_VERSION
+   echo "installing bundler"
+   gem install bundler
 fi
 }
 
