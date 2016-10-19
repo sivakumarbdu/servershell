@@ -77,7 +77,10 @@ fi
 }
 
 copy_to_server(){
-  rm provision_script_server.tar
+  if [ -e "provision_script_server.tar" ]
+    then
+    rm provision_script_server.tar
+  fi
   tar -cvf  provision_script_server.tar . --exclude='servers'  --exclude='examples'  --exclude='.git'
   if [ "$PEM_FILE" == "" ]
     then
@@ -143,4 +146,7 @@ case "$1" in
     ;;
 esac
 
-rm  provision_script_server.tar
+if [ -e "provision_script_server.tar" ]
+    then
+    rm provision_script_server.tar
+fi
