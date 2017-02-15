@@ -12,13 +12,13 @@ set_environment() {
 run_script_on_server() {
   if [ "$PEM_FILE" == "" ]
     then
-    ssh  -T ${USER}@${IP} << 'SCRIPT'
+    ssh  -F ssh.conf -T ${USER}@${IP} << 'SCRIPT'
       cd /tmp/pscript;
       tar -xvf provision_script_server.tar
       ./mod.sh
 SCRIPT
   else
-    ssh -T -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
+    ssh -F ssh.conf -T -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
       cd /tmp/pscript;
       tar -xvf provision_script_server.tar
       ./mod.sh
@@ -34,12 +34,12 @@ remove_scripts() {
   if [ "$PEM_FILE" == "" ]
     then
      echo "pem file not exists"
-    ssh -T ${USER}@${IP} << 'SCRIPT'
+    ssh -F ssh.conf -T ${USER}@${IP} << 'SCRIPT'
       rm -r /tmp/pscript
 SCRIPT
   else
     echo "pem file exists"
-    ssh  -T -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
+    ssh  -F ssh.conf -T -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
       rm -r /tmp/pscript
 SCRIPT
   fi
@@ -50,13 +50,13 @@ remove_server_logs()
   if [ "$PEM_FILE" == "" ]
     then
      echo "pem file not exists"
-    ssh -T  ${USER}@${IP} << 'SCRIPT'
-      rm -r $SCRIPT_LOG_FILE
+    ssh -F ssh.conf -T  ${USER}@${IP} << 'SCRIPT'
+      rm -r /tmp/script_log.txt
 SCRIPT
   else
     echo "pem file exists"
-    ssh  -T -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
-      rm -r $SCRIPT_LOG_FILE
+    ssh -F ssh.conf -T -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
+      rm -r /tmp/script_log.txt
 SCRIPT
   fi
 }
@@ -64,12 +64,12 @@ run_command_on_server() {
 echo "run command on server"
 if [ "$PEM_FILE" == "" ]
   then
-  ssh -T -o StrictHostKeyChecking=no ${USER}@${IP} << 'SCRIPT'
+  ssh -F ssh.conf -T -o StrictHostKeyChecking=no ${USER}@${IP} << 'SCRIPT'
     mkdir /tmp/pscript;
     cd /tmp/pscript;
 SCRIPT
 else
-  ssh -T -o StrictHostKeyChecking=no -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
+  ssh -F ssh.conf -T -o StrictHostKeyChecking=no -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
     mkdir /tmp/pscript;
     cd /tmp/pscript;
 SCRIPT
