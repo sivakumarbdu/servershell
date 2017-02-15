@@ -30,3 +30,12 @@ This will install modules in server machine machine
 ``` ./run.sh server ```
 
 We can create multiple servers insider servers/ folder. Modules will be installed in all server.
+
+##Available Modules
+*rvm_ruby
+*nvm_node
+*Git
+*Postgresql
+*Mysql
+
+
