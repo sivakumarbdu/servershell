@@ -65,13 +65,13 @@ echo "run command on server"
 if [ "$PEM_FILE" == "" ]
   then
   ssh -o StrictHostKeyChecking=no ${USER}@${IP} << 'SCRIPT'
-    cd /tmp/pscript;
     mkdir /tmp/pscript;
+    cd /tmp/pscript;
 SCRIPT
 else
   ssh -o StrictHostKeyChecking=no -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
-    cd /tmp/pscript;
     mkdir /tmp/pscript;
+    cd /tmp/pscript;
 SCRIPT
 fi
 }
@@ -81,7 +81,7 @@ copy_to_server(){
     then
     rm provision_script_server.tar
   fi
-  tar -cvf  provision_script_server.tar . --exclude='servers'  --exclude='examples'  --exclude='.git'
+  tar -cvf  provision_script_server.tar . --exclude='servers'  --exclude='examples'  --exclude='.git' --exclude='provision_script_server.tar'
   if [ "$PEM_FILE" == "" ]
     then
     scp -o StrictHostKeyChecking=no -i  provision_script_server.tar ${USER}@${IP}:/tmp/pscript
@@ -100,7 +100,6 @@ copy_log_to_local(){
 }
 
 run_server() {
-
 SERVERS=$(ls servers)
 for SERVER in $SERVERS
 do
@@ -115,7 +114,6 @@ do
   copy_log_to_local
   remove_server_logs
 done
-
 }
 
 run_in_single_node(){
