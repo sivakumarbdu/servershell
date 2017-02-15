@@ -42,6 +42,7 @@ else
    echo "installing bundler"
    gem install bundler
 fi
+rvm use $SCRIPT_RUBY_VERSION --default
 }
 
 install_ruby
