@@ -64,12 +64,12 @@ run_command_on_server() {
 echo "run command on server"
 if [ "$PEM_FILE" == "" ]
   then
-  ssh -F ssh.conf -T -o StrictHostKeyChecking=no ${USER}@${IP} << 'SCRIPT'
+  ssh -F ssh.conf -T  ${USER}@${IP} << 'SCRIPT'
     mkdir /tmp/pscript;
     cd /tmp/pscript;
 SCRIPT
 else
-  ssh -F ssh.conf -T -o StrictHostKeyChecking=no -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
+  ssh -F ssh.conf -T  -i $PEM_FILE ${USER}@${IP} << 'SCRIPT'
     mkdir /tmp/pscript;
     cd /tmp/pscript;
 SCRIPT
@@ -84,18 +84,18 @@ copy_to_server(){
   tar -cvf  provision_script_server.tar . --exclude='servers'  --exclude='examples'  --exclude='.git' --exclude='provision_script_server.tar'
   if [ "$PEM_FILE" == "" ]
     then
-    scp -o StrictHostKeyChecking=no -i  provision_script_server.tar ${USER}@${IP}:/tmp/pscript
+    scp -F ssh.conf -i  provision_script_server.tar ${USER}@${IP}:/tmp/pscript
   else
-    scp -o StrictHostKeyChecking=no -i $PEM_FILE  provision_script_server.tar ${USER}@${IP}:/tmp/pscript
+    scp  -F ssh.conf -i $PEM_FILE  provision_script_server.tar ${USER}@${IP}:/tmp/pscript
   fi
 }
 
 copy_log_to_local(){
   if [ "$PEM_FILE" == "" ]
     then
-    scp -o StrictHostKeyChecking=no -i   ${USER}@${IP}:${SCRIPT_LOG_FILE} log/
+    scp  -F ssh.conf -i   ${USER}@${IP}:${SCRIPT_LOG_FILE} log/
   else
-    scp -o StrictHostKeyChecking=no -i $PEM_FILE  ${USER}@${IP}:${SCRIPT_LOG_FILE} log/
+    scp  -F ssh.conf -i $PEM_FILE  ${USER}@${IP}:${SCRIPT_LOG_FILE} log/
   fi
 }
 
