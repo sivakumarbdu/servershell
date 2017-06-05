@@ -1,17 +1,17 @@
 Collection of simple shell scripts to provision linux machine. Shell scrips are grouped inside the modules folder.
 
-##Selecting modules to install
+## Selecting modules to install
  Edit the ```env.sh``` and add the modules to install. You can check the modules insider modules/ folder.
 
 ```export SCRIPT_MODULES="rvm_ruby nvm_node mysql"```
 
 This will install ruby with rvm, node with nvm (node version manager) and mysql
 
-##Privisioning local machine
+## Privisioning local machine
 ``` ./run local ```
 This will install modules in local machine
 
-##Provisioning server
+## Provisioning server
 
 Configure servers inside servers/ folder. Create file with.sh(eg ```servers/aws_server1.sh```) extension add server details.
 
@@ -31,7 +31,7 @@ This will install modules in server machine machine
 
 We can create multiple servers insider servers/ folder. Modules will be installed in all server.
 
-##Available Modules
+## Available Modules
 * Ruby (rvm_ruby)
 * Node with NVM (nvm_node)
 * Git (git)
